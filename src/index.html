@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de Contraseñas - Docker + Nginx</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <div class="icon">🔐</div>
+          <h1>Generador de Contraseñas</h1>
+          <p>Crea contraseñas seguras y personalizadas</p>
+        </div>
+
+        <div class="content">
+          <!-- Control de longitud -->
+          <div class="form-group">
+            <label for="length"
+              >Longitud: <span id="lengthValue">12</span> caracteres</label
+            >
+            <input
+              type="range"
+              id="length"
+              min="4"
+              max="50"
+              value="12"
+              class="slider"
+            />
+            <input
+              type="number"
+              id="lengthInput"
+              min="4"
+              max="50"
+              value="12"
+              class="number-input"
+            />
+          </div>
+
+          <!-- Opciones de caracteres -->
+          <div class="form-group">
+            <label class="section-title">Tipos de caracteres:</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="lowercase" checked />
+                <span class="checkmark"></span>
+                Letras minúsculas (a-z)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="uppercase" checked />
+                <span class="checkmark"></span>
+                Letras mayúsculas (A-Z)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="numbers" checked />
+                <span class="checkmark"></span>
+                Números (0-9)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="symbols" />
+                <span class="checkmark"></span>
+                Símbolos especiales (!@#$%...)
+              </label>
+            </div>
+          </div>
+
+          <!-- Mensaje de error -->
+          <div id="error" class="error hidden"></div>
+
+          <!-- Botón generar -->
+          <button id="generateBtn" class="generate-btn">
+            🔄 Generar Contraseña
+          </button>
+
+          <!-- Resultado -->
+          <div id="result" class="result hidden">
+            <label>Contraseña generada:</label>
+            <div class="password-container">
+              <input
+                type="text"
+                id="generatedPassword"
+                readonly
+                class="password-input"
+              />
+              <button
+                id="copyBtn"
+                class="copy-btn"
+                title="Copiar al portapapeles"
+              >
+                📋
+              </button>
+            </div>
+            <div id="copyMessage" class="copy-message hidden">
+              ¡Contraseña copiada al portapapeles!
+            </div>
+          </div>
+
+          <!-- Consejos de seguridad -->
+          <div class="security-tips">
+            <h4>💡 Consejos de seguridad:</h4>
+            <ul>
+              <li>Usa al menos 12 caracteres</li>
+              <li>Incluye diferentes tipos de caracteres</li>
+              <li>No reutilices contraseñas importantes</li>
+              <li>Considera usar un gestor de contraseñas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

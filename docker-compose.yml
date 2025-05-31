@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: static-web-nginx
+    ports:
+      - "80:80"  # Mapear puerto 80 del host al puerto 80 del contenedor
+    volumes:
+      - ./src:/usr/share/nginx/html:ro  # Montar archivos estáticos (solo lectura)
+    restart: unless-stopped
+    networks:
+      - web-network
+
+networks:
+  web-network:
+    driver: bridge
+
+# Opcional: Volumen para persistir logs
+volumes:
+  nginx-logs:
+    driver: local
